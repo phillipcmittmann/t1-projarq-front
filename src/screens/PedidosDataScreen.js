@@ -22,7 +22,7 @@ export default class PedidosDataScreen extends React.Component {
     };
     
     async buscarPedidos() {
-        axios.get(`${PEDIDO}/data?nome=${this.state.data}`,
+        axios.get(`${PEDIDO}/data?data=${this.state.data}`,
         {
             headers: {
                 Authorization: `Bearer ${await AsyncStorage.getItem('AUTH_TOKEN')}`
