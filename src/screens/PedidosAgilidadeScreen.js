@@ -16,28 +16,30 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 export default function PedidosAgilidadeScreen() {
     const [pedidos, setPedidos] = useState(0);
 
-    useEffect(async () => {
-        axios.get(`${PEDIDO}/agilidade`,
-        {
-            headers: {
-                Authorization: `Bearer ${await AsyncStorage.getItem('AUTH_TOKEN')}`
-            }
-        })
-        .then((response) => {
-            setPedidos(response.data.pedidos)
-        })
-        .catch(function(error) {
-            Alert.alert(
-                'Erro',
-                `${error}`,
-                [
-                    {
-                        text: "Ok"
-                    }
-                ]
-            )
-        })
-    }, []);
+    useEffect(() => {
+        ;(async function() {
+            axios.get(`${PEDIDO}/agilidade`,
+            {
+                headers: {
+                    Authorization: `Bearer ${await AsyncStorage.getItem('AUTH_TOKEN')}`
+                }
+            })
+            .then((response) => {
+                setPedidos(response.data.pedidos)
+            })
+            .catch(function(error) {
+                Alert.alert(
+                    'Erro',
+                    `${error}`,
+                    [
+                        {
+                            text: "Ok"
+                        }
+                    ]
+                )
+            })
+        })()
+    });
     
     return (
         <View style={styles.container}>

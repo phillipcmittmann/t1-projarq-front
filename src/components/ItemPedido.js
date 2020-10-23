@@ -1,15 +1,19 @@
 import React from 'react';
 
 import {
-    View,
+    TouchableOpacity,
     Text,
     StyleSheet
 } from 'react-native';
 
+import * as RootNavigation from '../../RootNavigation';
+
 export default class ItemPedido extends React.Component {
     render() {
         return (
-            <View style={styles.container}>
+            <TouchableOpacity style={styles.container} onPress={() => RootNavigation.navigate('Detalhes Pedido', {
+                id: this.props.item.id
+            })}>
                 <Text style={styles.text}>
                     {this.props.item.ecommerce.nome}
                 </Text>
@@ -29,7 +33,7 @@ export default class ItemPedido extends React.Component {
                 <Text style={styles.textValues}>
                     Valor Total: {this.props.item.valorTotalCompra}
                 </Text>
-            </View>
+            </TouchableOpacity>
         )
     }
 }

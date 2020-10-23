@@ -8,24 +8,24 @@ import {
 } from 'react-native';
 
 import { PEDIDO } from '../common/Urls';
-import ItemPedido from '../components/ItemPedido';
+import ItemDetalhesProduto from '../components/ItemDetalhesProduto';
 
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export default function PedidosEntreguesScreen() {
+export default function DetalhesPedido({ route }) {
     const [pedidos, setPedidos] = useState(0);
 
     useEffect(() => {
-        ;(async function() {
-            axios.get(`${PEDIDO}/prazo?entregue=true`,
+        async function fetchData() {
+            axios.get(`${PEDIDO}/detalhes/${route.params.id}`,
             {
                 headers: {
                     Authorization: `Bearer ${await AsyncStorage.getItem('AUTH_TOKEN')}`
                 }
             })
             .then((response) => {
-                setPedidos(response.data.pedidos)
+                setPedidos(response.data.produtoInfos)
             })
             .catch(function(error) {
                 Alert.alert(
@@ -38,8 +38,10 @@ export default function PedidosEntreguesScreen() {
                     ]
                 )
             })
-        })()
-    }, []);
+        };
+
+        fetchData();
+    }, [route.params.id]);
 
     return (
         <View style={styles.container}>
@@ -48,7 +50,7 @@ export default function PedidosEntreguesScreen() {
                     data={pedidos}
                     renderItem={({item, index}) => {
                         return (
-                            <ItemPedido
+                            <ItemDetalhesProduto
                                 item={item} 
                                 index={index} 
                             />
@@ -68,11 +70,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     containerList: {
-        height: '35%',
         marginTop: 20
     },
     list: {
         marginTop: 10,
-        height: '30%'
     },
 });
