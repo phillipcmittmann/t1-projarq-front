@@ -52,7 +52,7 @@ export default class PedidosDataScreen extends React.Component {
                 <TextInput
                     style={styles.textInput}
                     onChangeText={text => this.setState({ data: text })}
-                    placeholder={'E-commerce'}
+                    placeholder={'Data'}
                     maxLength={20}
                     value={this.state.data}
                 />
