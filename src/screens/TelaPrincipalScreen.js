@@ -16,6 +16,7 @@ export default class TelaPrincipalScreen extends React.Component {
               <Button text={'Pedidos por Data'} onPress={() => this.props.navigation.navigate('Pedidos Data')} />
               <Button text={'Pedidos por Agilidade'} onPress={() => this.props.navigation.navigate('Pedidos Agilidade')} />
               <Button text={'Pedidos Entregues'} onPress={() => this.props.navigation.navigate('Pedidos Entregues')} />
+              <Button text={'Atualizar Pedidos'} onPress={() => this.props.navigation.navigate('Atualizar Pedidos')} />
             </View>
         )
     }

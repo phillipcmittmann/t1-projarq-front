@@ -15,6 +15,7 @@ import PedidosDataScreen from './src/screens/PedidosDataScreen';
 import PedidosAgilidadeScreen from './src/screens/PedidosAgilidadeScreen';
 import PedidosEntreguesScreen from './src/screens/PedidosEntreguesScreen';
 import DetalhesPedidoScreen from './src/screens/DetalhesPedidoScreen';
+import AtualizarPedidosScreen from './src/screens/AtualizarPedidosScreen';
  
 const Stack = createStackNavigator();
 
@@ -30,6 +31,7 @@ export default function App({ navigation }) {
                 <Stack.Screen name="Pedidos Agilidade" component={PedidosAgilidadeScreen} navigation={navigation} />
                 <Stack.Screen name="Pedidos Entregues" component={PedidosEntreguesScreen} navigation={navigation} />
                 <Stack.Screen name="Detalhes Pedido" component={DetalhesPedidoScreen} navigation={navigation} />
+                <Stack.Screen name="Atualizar Pedidos" component={AtualizarPedidosScreen} navigation={navigation} />
             </Stack.Navigator>
         </NavigationContainer>
     );
